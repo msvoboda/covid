@@ -9,7 +9,7 @@ namespace CovidApp.ViewModels
     {
         public AboutViewModel()
         {
-            Title = "About";
+            Title = "O aplikaci";
             OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://xamarin.com"));
         }
 
