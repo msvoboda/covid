@@ -92,6 +92,19 @@ namespace CovidApp.ViewModels
             }
         }
 
+        private int _dayIncrease=0;
+        public int DayIncrease
+        {
+            get
+            {
+                return _dayIncrease;
+            }
+            set
+            {
+                SetProperty(ref _dayIncrease, value);
+            }
+        }
+
 
         public void LoadData()
         {
@@ -114,6 +127,14 @@ namespace CovidApp.ViewModels
                 Deceased = _summary.deceased;
                 TotalNakazeni = _summary.infected;
                 TotalTesty = _summary.totalTested;
+                try
+                {
+                    DayIncrease = _summary.infectedDaily.Last().value;
+                }
+                catch(Exception e)
+                {
+                    Console.WriteLine(e);
+                }
             });
 
             Task<TestData> taskTest = covidService.GetTestyList();
