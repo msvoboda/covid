@@ -20,7 +20,7 @@ namespace CovidApp.ViewModels
 
         private List<NakazaDen> _nakaza;
         private TestData _testy;
-        private UnoficialSummary _summary;
+        private CovidSummary _summary;
 
         private DateTime _datum;
         public DateTime Datum
@@ -36,8 +36,8 @@ namespace CovidApp.ViewModels
             }
         }
 
-        int _totalNakaza = 0;
-        public int TotalNakazeni
+        long _totalNakaza = 0;
+        public long TotalNakazeni
         {
             get
             {
@@ -50,8 +50,8 @@ namespace CovidApp.ViewModels
             }
         }
 
-        int _totalTesty = 0;
-        public int TotalTesty
+        long _totalTesty = 0;
+        public long TotalTesty
         {
             get
             {
@@ -64,8 +64,8 @@ namespace CovidApp.ViewModels
             }
         }
 
-        int _recovered = 0;
-        public int Recovered
+        long _recovered = 0;
+        public long Recovered
         {
             get
             {
@@ -78,8 +78,8 @@ namespace CovidApp.ViewModels
             }
         }
 
-        int _deceased = 0;
-        public int Deceased
+        long _deceased = 0;
+        public long Deceased
         {
             get
             {
@@ -92,8 +92,8 @@ namespace CovidApp.ViewModels
             }
         }
 
-        private int _dayIncrease=0;
-        public int DayIncrease
+        private long _dayIncrease=0;
+        public long DayIncrease
         {
             get
             {
@@ -106,7 +106,7 @@ namespace CovidApp.ViewModels
         }
 
 
-        public void LoadData()
+        public Task<CovidSummary> LoadData()
         {
             Task<IEnumerable<NakazaDen>> task = covidService.GetNakazaList();
             task.ContinueWith(result =>
@@ -119,7 +119,7 @@ namespace CovidApp.ViewModels
                 Datum =  dt;
             });
 
-            Task<UnoficialSummary> taskSum = covidService.GetUnoficialSummary();
+            Task<CovidSummary> taskSum = covidService.GetCovidSummary();
             taskSum.ContinueWith(result =>
             {
                 _summary = result.Result;
@@ -145,7 +145,7 @@ namespace CovidApp.ViewModels
 
             });
 
-            
+            return taskSum;
         }
     }
 }

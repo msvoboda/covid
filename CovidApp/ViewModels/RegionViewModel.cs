@@ -17,11 +17,11 @@ namespace CovidApp.ViewModels
             Title = "Přehled krajů";
         }
 
-        private UnoficialSummary _summary;
+        private CovidSummary _summary;
 
         public void LoadData()
         {
-            Task<UnoficialSummary> taskSum = covidService.GetUnoficialSummary();
+            Task<CovidSummary> taskSum = covidService.GetCovidSummary();
             taskSum.ContinueWith(result =>
             {
                 _summary = result.Result;

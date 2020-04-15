@@ -1,4 +1,7 @@
-﻿using CovidApp.ViewModels;
+﻿using CovidApp.Models;
+using CovidApp.ViewModels;
+using Microcharts;
+using SkiaSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +22,44 @@ namespace CovidApp.Views
         {
             InitializeComponent();
             BindingContext = viewModel = new CovidViewModel();
-            viewModel.LoadData();
+            Task<CovidSummary> task = viewModel.LoadData();
+            task.ContinueWith(result =>
+            {
+            List<ChartEntry> entries = new List<ChartEntry>();
+
+                int cnt = 1;
+            foreach (DayValue nv in result.Result.totalPositiveTests.ToList()) {
+
+                    if (nv.value == 0)
+                    {
+                        cnt++;
+                        continue;
+                    }
+
+                    ChartEntry entry = new ChartEntry(nv.value)
+                    {
+                        Color = SKColor.Parse("#ff3300")                 
+                    };
+                    if (cnt % 5 == 0)
+                    {
+                        entry.Label = DateTime.Parse(nv.date.ToString()).ToString();
+                        entry.ValueLabel = nv.value.ToString();
+                    }
+                    int total = result.Result.totalPositiveTests.Count();
+                    if (cnt == 1 || cnt == total)
+                    {
+                        entry.Label = DateTime.Parse(nv.date.ToString()).ToString();
+                        entry.ValueLabel = nv.value.ToString();
+                    }
+                    cnt++;
+                    entries.Add(entry);
+            }
+            var chart = new LineChart() { Entries = entries };
+                chart.ValueLabelOrientation = Orientation.Vertical;
+                chart.LineMode = LineMode.Straight;
+            Chart.Chart = chart;
+            });
+
         }
     }
 }

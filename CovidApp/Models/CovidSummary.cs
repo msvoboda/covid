@@ -4,27 +4,39 @@ using System.Text;
 
 namespace CovidApp.Models
 {
-    public class UnoficialSummary
+    public class CovidSummary
     {
-        public int totalTested
+        /// <summary>
+        /// Tototal tested people
+        /// </summary>
+        public long totalTested
         {
             get;
             set;
         }
 
-        public int infected
+        /// <summary>
+        ///Count people, which were positive tested
+        /// </summary>
+        public long infected
         {
             get;
             set;
         }
 
-        public int recovered
+        /// <summary>
+        ///Count people, which were recovered
+        /// </summary>
+        public long recovered
         {
             get;
             set;
         }
 
-        public int deceased
+        /// <summary>
+        ///Count people, which have been died.
+        /// </summary>
+        public long deceased
         {
             get;
             set;

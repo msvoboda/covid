@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
              mc:Ignorable="d"
              Title="{Binding Title}"
              x:Class="CovidApp.Views.CovidPage">
@@ -14,8 +15,7 @@
                 <RowDefinition Height="10*"></RowDefinition>
                 <RowDefinition Height="20*"></RowDefinition>
                 <RowDefinition Height="20*"></RowDefinition>
-                <RowDefinition Height="20*"></RowDefinition>
-                <RowDefinition Height="30*"></RowDefinition>
+                <RowDefinition Height="50*"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="50*"></ColumnDefinition>
@@ -37,6 +37,8 @@
             <BoxView Grid.Row="2" Grid.Column="1" CornerRadius="4" Color="Green" Margin="4"></BoxView>
                 <Label Grid.Row="2" Grid.Column="1" Text="Počet uzdravených" TextColor="White" VerticalOptions="Start" HorizontalOptions="Center" FontSize="Small" Margin="0,4,0,0"></Label>
                 <Label Grid.Row="2" Grid.Column="1" Text="{Binding Recovered}" TextColor="White" FontSize="Title" VerticalOptions="Center" HorizontalOptions="Center"></Label>
+                <forms:ChartView Grid.Row="3" Grid.ColumnSpan="2" x:Name="Chart" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                </forms:ChartView>
             </Grid>
         </StackLayout>
     </ContentPage.Content>

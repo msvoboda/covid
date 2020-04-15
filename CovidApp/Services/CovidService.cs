@@ -14,14 +14,14 @@ namespace CovidApp.Services
     {
         Task<IEnumerable<NakazaDen>> GetNakazaList();
         Task<TestData> GetTestyList();
-        Task<UnoficialSummary> GetUnoficialSummary();
+        Task<CovidSummary> GetCovidSummary();
     }
 
     public class CovidService : ICovidService
     {
         Uri urlNakaza = new Uri("https://onemocneni-aktualne.mzcr.cz/api/v1/covid-19/nakaza.min.json");
         Uri urlTesty = new Uri("https://onemocneni-aktualne.mzcr.cz/api/v1/covid-19/testy.min.json");
-        Uri urlUnoficial = new Uri("https://api.apify.com/v2/key-value-stores/K373S4uCFR9W1K8ei/records/LATEST?disableRedirect=true");
+        Uri urlCovidData = new Uri("https://api.apify.com/v2/key-value-stores/K373S4uCFR9W1K8ei/records/LATEST?disableRedirect=true");
 
         HttpClientService client = new HttpClientService();
 
@@ -48,14 +48,14 @@ namespace CovidApp.Services
             return result;
         }
 
-        public async Task<UnoficialSummary> GetUnoficialSummary()
+        public async Task<CovidSummary> GetCovidSummary()
         {
-            var result = await client.Get<UnoficialSummary>(urlUnoficial, null, async response =>
+            var result = await client.Get<CovidSummary>(urlCovidData, null, async response =>
             {
                 var content = await response.Content.ReadAsStringAsync();
                 try
                 {
-                    UnoficialSummary summary = JsonConvert.DeserializeObject<UnoficialSummary>(content);
+                    CovidSummary summary = JsonConvert.DeserializeObject<CovidSummary>(content);
                     return summary;
                 }
                 catch(Exception ex)
