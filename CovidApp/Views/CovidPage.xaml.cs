@@ -27,7 +27,8 @@ namespace CovidApp.Views
             {
             List<ChartEntry> entries = new List<ChartEntry>();
 
-                int cnt = 1;
+             int cnt = 1;
+             DayValue last=null;
             foreach (DayValue nv in result.Result.totalPositiveTests.ToList()) {
 
                     if (nv.value == 0)
@@ -40,24 +41,28 @@ namespace CovidApp.Views
                     {
                         Color = SKColor.Parse("#ff3300")                 
                     };
-                    if (cnt % 5 == 0)
+                    if (cnt % 10 == 0)
                     {
-                        entry.Label = DateTime.Parse(nv.date.ToString()).ToString();
+                        entry.Label = DateTime.Parse(nv.date.Substring(0,10)).ToShortDateString();
                         entry.ValueLabel = nv.value.ToString();
                     }
                     int total = result.Result.totalPositiveTests.Count();
                     if (cnt == 1 || cnt == total)
                     {
-                        entry.Label = DateTime.Parse(nv.date.ToString()).ToString();
+                        entry.Label = DateTime.Parse(nv.date.Substring(0, 10)).ToShortDateString();
                         entry.ValueLabel = nv.value.ToString();
                     }
+
+                    last = nv;
                     cnt++;
                     entries.Add(entry);
             }
             var chart = new LineChart() { Entries = entries };
                 chart.ValueLabelOrientation = Orientation.Vertical;
+                chart.PointMode = PointMode.None;
                 chart.LineMode = LineMode.Straight;
-            Chart.Chart = chart;
+                Chart.Chart = chart;
+
             });
 
         }

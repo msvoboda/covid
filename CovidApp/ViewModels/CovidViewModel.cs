@@ -37,7 +37,7 @@ namespace CovidApp.ViewModels
         }
 
         long _totalNakaza = 0;
-        public long TotalNakazeni
+        public long Infected
         {
             get
             {
@@ -46,7 +46,7 @@ namespace CovidApp.ViewModels
             set
             {
                 _totalNakaza = value;
-                OnPropertyChanged(nameof(TotalNakazeni));
+                OnPropertyChanged(nameof(Infected));
             }
         }
 
@@ -113,7 +113,7 @@ namespace CovidApp.ViewModels
             {
                 _nakaza = result.Result.ToList();
                 NakazaDen last = _nakaza.Last();
-                TotalNakazeni = last.pocetCelkem;
+                Infected = last.pocetCelkem;
                 DateTime dt;
                 DateTime.TryParse(last.datum, out dt);
                 Datum =  dt;
@@ -125,8 +125,9 @@ namespace CovidApp.ViewModels
                 _summary = result.Result;
                 Recovered = _summary.recovered;
                 Deceased = _summary.deceased;
-                TotalNakazeni = _summary.infected;
+                Infected = _summary.infected;
                 TotalTesty = _summary.totalTested;
+                Datum = _summary.lastUpdatedAtSource;
                 try
                 {
                     DayIncrease = _summary.infectedDaily.Last().value;

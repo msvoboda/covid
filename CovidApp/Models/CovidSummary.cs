@@ -72,5 +72,11 @@ namespace CovidApp.Models
             get;
             set;
         }
+
+        public DateTime lastUpdatedAtSource
+        {
+            get;
+            set;
+        }
     }
 }

@@ -2,12 +2,17 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              Title="{Binding Title}"
              x:Class="CovidApp.Views.RegionPage">
     <ContentPage.Content>
-        <StackLayout Margin="20">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50*"></RowDefinition>
+                <RowDefinition Height="50*"></RowDefinition>
+            </Grid.RowDefinitions>
             <CollectionView ItemsSource="{Binding Regions}">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Vertical"
@@ -33,6 +38,8 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-        </StackLayout>
+            <ffimageloadingsvg:SvgCachedImage Grid.Row="1" WidthRequest="200" HeightRequest="200" Source="resource://CovidApp.Resources.czech.svg" />
+            <Label Text="XXX" Grid.Row="1"></Label>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

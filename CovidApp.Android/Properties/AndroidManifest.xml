@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="1.0.1" package="com.svobo.covidapp" android:installLocation="auto" android:versionCode="2">
-	<uses-sdk android:minSdkVersion="26" android:targetSdkVersion="28" android:screenOrientation="portrait" />
-	<application android:label="CovidApp.Android" android:icon="@drawable/virus"></application>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="1.0.1" package="com.svobo.covidapp" android:installLocation="internalOnly" android:versionCode="2">
+	<uses-sdk android:minSdkVersion="29" android:targetSdkVersion="29" android:screenOrientation="portrait" />
+	<application android:label="CovidApp.Android" android:icon="@mipmap/launcher_foreground"></application>
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 </manifest>

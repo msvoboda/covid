@@ -34,6 +34,9 @@
         <Tab Title="Covid-19" Icon="virus.png">
             <ShellContent ContentTemplate="{DataTemplate local:CovidPage}" />
         </Tab>
+        <Tab Title="Graphs" Icon="virus.png">
+            <ShellContent ContentTemplate="{DataTemplate local:CovidGraphPage}" />
+        </Tab>
         <Tab Title="Kraje" Icon="tab_feed.png">
             <ShellContent ContentTemplate="{DataTemplate local:RegionPage}" />
         </Tab>
