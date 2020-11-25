@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+             xmlns:controls="clr-namespace:CovidApp.Controls"
              mc:Ignorable="d"
              Title="{Binding Title}"
              x:Class="CovidApp.Views.CovidPage">
@@ -21,8 +22,9 @@
                 <ColumnDefinition Width="50*"></ColumnDefinition>
                 <ColumnDefinition Width="50*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-                <BoxView Grid.Row="0" CornerRadius="4" Color="Coral" Margin="4"></BoxView>
-                <BoxView Grid.Row="0" Grid.Column="1" CornerRadius="4" Color="Gray" Margin="4"></BoxView>
+               
+                <controls:BoxGradient Grid.Row="0" Color1="Coral" Color2="Red" Margin="4" RoundRadius="8"></controls:BoxGradient>
+                <controls:BoxGradient Grid.Row="0" Grid.Column="1" Color1="Gray" Color2="Black" Margin="4" RoundRadius="8"></controls:BoxGradient>
                 <Label Grid.Row="0" Text="Denní přírustek" TextColor="White" VerticalOptions="Start" HorizontalOptions="Center" FontSize="Micro" Margin="0,4,0,0"></Label>
                 <Label Grid.Row="0" Text="{Binding DayIncrease}" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" FontSize="Small" Margin="0,4,0,0"></Label>
                 <Label Grid.Row="0" Grid.Column="1" Text="Denní přírustek" TextColor="White" VerticalOptions="Start" HorizontalOptions="Center" FontSize="Micro" Margin="0,4,0,0"></Label>
