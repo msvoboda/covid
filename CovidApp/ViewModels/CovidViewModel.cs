@@ -20,6 +20,7 @@ namespace CovidApp.ViewModels
 
         private List<NakazaDen> _nakaza;
         private TestData _testy;
+        private DieData _dies;
         private CovidSummary _summary;
 
         private DateTime _datum;
@@ -92,6 +93,21 @@ namespace CovidApp.ViewModels
             }
         }
 
+        long _daydeceased;
+        public long DayDeceased
+        {
+            get
+            {
+                return _daydeceased;
+            }
+            set
+            {
+                _daydeceased = value;
+                OnPropertyChanged(nameof(DayDeceased));
+            }
+        }
+
+
         private long _dayIncrease=0;
         public long DayIncrease
         {
@@ -136,6 +152,17 @@ namespace CovidApp.ViewModels
                 {
                     Console.WriteLine(e);
                 }
+            });
+
+            Task<DieData> taskDie = covidService.GetDieList();
+            taskDie.ContinueWith(result =>
+            {
+                _dies = result.Result;
+                DieDay today = _dies.data.Last();
+                DieDay yesterday = _dies.data[_dies.data.Count - 2];
+                Console.WriteLine($"{today.datum}; {yesterday.datum}");
+                DayDeceased = today.kumulativni_pocet_umrti- yesterday.kumulativni_pocet_umrti;
+               
             });
 
             Task<TestData> taskTest = covidService.GetTestyList();

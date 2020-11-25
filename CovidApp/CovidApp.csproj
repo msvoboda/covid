@@ -7,11 +7,13 @@
 
   <ItemGroup>
     <None Remove="Resources\bug.svg" />
+    <None Remove="Resources\cr.svg" />
     <None Remove="Resources\czech.svg" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Resources\bug.svg" />
+    <EmbeddedResource Include="Resources\cr.svg" />
     <EmbeddedResource Include="Resources\czech.svg" />
   </ItemGroup>
 

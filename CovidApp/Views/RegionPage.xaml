@@ -39,7 +39,6 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
             <ffimageloadingsvg:SvgCachedImage Grid.Row="1" WidthRequest="200" HeightRequest="200" Source="resource://CovidApp.Resources.czech.svg" />
-            <Label Text="XXX" Grid.Row="1"></Label>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

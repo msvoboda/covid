@@ -15,15 +15,19 @@ namespace CovidApp.Services
         Task<IEnumerable<NakazaDen>> GetNakazaList();
         Task<TestData> GetTestyList();
         Task<CovidSummary> GetCovidSummary();
+        Task<DieData> GetDieList();
     }
 
     public class CovidService : ICovidService
     {
+
         Uri urlNakaza = new Uri("https://onemocneni-aktualne.mzcr.cz/api/v1/covid-19/nakaza.min.json");
         Uri urlTesty = new Uri("https://onemocneni-aktualne.mzcr.cz/api/v1/covid-19/testy.min.json");
         Uri urlCovidData = new Uri("https://api.apify.com/v2/key-value-stores/K373S4uCFR9W1K8ei/records/LATEST?disableRedirect=true");
+        Uri urlDieData = new Uri("https://onemocneni-aktualne.mzcr.cz/api/v2/covid-19/nakazeni-vyleceni-umrti-testy.min.json");
 
         HttpClientService client = new HttpClientService();
+
 
         public async Task<IEnumerable<NakazaDen>> GetNakazaList()
         {
@@ -63,6 +67,17 @@ namespace CovidApp.Services
                     Console.WriteLine(ex);               
                 }
                 return null;
+            });
+            return result;
+        }
+
+        public async Task<DieData> GetDieList()
+        {
+            var result = await client.Get<DieData>(urlDieData, null, async response =>
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                DieData items = JsonConvert.DeserializeObject<DieData>(content);
+                return items;
             });
             return result;
         }

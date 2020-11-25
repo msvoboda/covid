@@ -21,10 +21,12 @@
                 <ColumnDefinition Width="50*"></ColumnDefinition>
                 <ColumnDefinition Width="50*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-                <BoxView Grid.Row="0" Grid.ColumnSpan="2" CornerRadius="4" Color="Gray" Margin="4">
-                </BoxView>
-                <Label Grid.Row="0" Grid.ColumnSpan="2" Text="Denní přírustek" TextColor="White" VerticalOptions="Start" HorizontalOptions="Center" FontSize="Micro" Margin="0,4,0,0"></Label>
-                <Label Grid.Row="0" Grid.ColumnSpan="2" Text="{Binding DayIncrease}" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" FontSize="Small" Margin="0,4,0,0"></Label>
+                <BoxView Grid.Row="0" CornerRadius="4" Color="Coral" Margin="4"></BoxView>
+                <BoxView Grid.Row="0" Grid.Column="1" CornerRadius="4" Color="Gray" Margin="4"></BoxView>
+                <Label Grid.Row="0" Text="Denní přírustek" TextColor="White" VerticalOptions="Start" HorizontalOptions="Center" FontSize="Micro" Margin="0,4,0,0"></Label>
+                <Label Grid.Row="0" Text="{Binding DayIncrease}" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" FontSize="Small" Margin="0,4,0,0"></Label>
+                <Label Grid.Row="0" Grid.Column="1" Text="Denní přírustek" TextColor="White" VerticalOptions="Start" HorizontalOptions="Center" FontSize="Micro" Margin="0,4,0,0"></Label>
+                <Label Grid.Row="0" Grid.Column="1" Text="{Binding DayDeceased}" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" FontSize="Small" Margin="0,4,0,0"></Label>
             
                 <BoxView Grid.Row="1" CornerRadius="4" Color="Red" Margin="4"></BoxView>
                 <Label Grid.Row="1" Text="Počet nakažených" TextColor="White" VerticalOptions="Start" HorizontalOptions="Center" FontSize="Small" Margin="0,4,0,0"></Label>

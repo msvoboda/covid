@@ -49,7 +49,7 @@ namespace CovidApp.Services
                 }
             }
             catch (Exception ex)
-            {
+           {
                 if (log != null)
                 {
                     log.Error($"{caller}: service call not successful ({requestUri}): {ex}");
