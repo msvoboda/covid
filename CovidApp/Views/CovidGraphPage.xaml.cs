@@ -1,4 +1,5 @@
-﻿using CovidApp.Models;
+﻿using CovidApp.ChartData;
+using CovidApp.Models;
 using CovidApp.ViewModels;
 using Microcharts;
 using SkiaSharp;
@@ -26,6 +27,7 @@ namespace CovidApp.Views
             task.ContinueWith(result =>
             {
                 List<ChartEntry> entries = new List<ChartEntry>();
+                TimeSeries timeValues = new TimeSeries();
 
                 int cnt = 1;
                 DayValue last = null;
@@ -42,46 +44,21 @@ namespace CovidApp.Views
                         continue;
                     }
 
-                    int rozdil = nv.value - last.value;
-                    ChartEntry entry = new ChartEntry(rozdil);
-                    
-                    if (rozdil < 100)
-                    {
-                        entry.Color = SKColor.Parse("#00ff00");
-                    }
-                    else if (rozdil < 1000)
-                    {
-                        entry.Color = SKColor.Parse("#FFBE33");
-                    }
-                    else
-                    {
-                        entry.Color = SKColor.Parse("#ff3300");
-                    }
-                  
-                    if (cnt % 10 == 0)
-                    {
-                        entry.Label = DateTime.Parse(nv.date.Substring(0, 10)).ToShortDateString().Trim();
-                        entry.ValueLabel = rozdil.ToString();
-                    }
-                    int total = result.Result.totalPositiveTests.Count();
-                    if (cnt == 1 || cnt == total)
-                    {
-                        entry.Label = DateTime.Parse(nv.date.Substring(0, 10)).ToShortDateString().Trim();
-                        entry.ValueLabel = rozdil.ToString();
-                    }
-
+                    int rozdil = nv.value - last.value;               
                     last = nv;
                     cnt++;
-                    entries.Add(entry);
-      
-                }
-                var chart = new LineChart() { Entries = entries };
-                chart.ValueLabelOrientation = Orientation.Vertical;
-                chart.LineMode = LineMode.Straight;
-                //chart.LabelTextSize = 12;
-                chart.LineSize = 2;
-                Chart.Chart = chart;
+    
 
+                    TimeValue value = new TimeValue()
+                    {
+                        DateTime = DateTime.Parse(nv.date),
+                        Value = (float)rozdil
+                    };                    
+                    timeValues.Add(value);
+
+                }
+
+                chartSimple.setTimeSeries(timeValues);
             });
         }
     }

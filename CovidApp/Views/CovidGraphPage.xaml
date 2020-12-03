@@ -8,17 +8,17 @@
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="70*"></RowDefinition>
-                <RowDefinition Height="30*"></RowDefinition>
+                <RowDefinition Height="100*"></RowDefinition>
             </Grid.RowDefinitions>
+            <!--
             <forms:ChartView x:Name="Chart" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             </forms:ChartView>
-             
-            <ffimageloadingsvg:SvgCachedImage Grid.Row="1" WidthRequest="200" HeightRequest="200" Source="resource://CovidApp.Resources.cr.svg" />
-            
+            -->
             <!--
+            <ffimageloadingsvg:SvgCachedImage Grid.Row="1" WidthRequest="200" HeightRequest="200" Source="resource://CovidApp.Resources.cr.svg" />
             <controls:BoxGradient Grid.Row="1"></controls:BoxGradient>
             -->
+            <controls:ChartControl x:Name="chartSimple" Title="Denní přírustky nakažených" StepY="2000"></controls:ChartControl>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
