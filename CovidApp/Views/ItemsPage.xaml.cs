@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-using CovidApp.Models;
-using CovidApp.Views;
-using CovidApp.ViewModels;
+using CovApp.Models;
+using CovApp.Views;
+using CovApp.ViewModels;
 
-namespace CovidApp.Views
+namespace CovApp.Views
 {
     // Learn more about making custom code visible in the Xamarin.Forms previewer
     // by visiting https://aka.ms/xamarinforms-previewer

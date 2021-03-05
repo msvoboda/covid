@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CovidApp.Models
+namespace CovApp.Models
 {
-    public class CovidSummary
+    public class NemocSummary
     {
         /// <summary>
         /// Tototal tested people

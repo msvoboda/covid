@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
              xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
-             xmlns:controls="clr-namespace:CovidApp.Controls"
-             x:Class="CovidApp.Views.CovidGraphPage" Title="{Binding Title}">
+             xmlns:controls="clr-namespace:CovApp.Controls"
+             x:Class="CovApp.Views.CovidGraphPage" Title="{Binding Title}">
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>

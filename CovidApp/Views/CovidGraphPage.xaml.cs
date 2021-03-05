@@ -1,6 +1,6 @@
-﻿using CovidApp.ChartData;
-using CovidApp.Models;
-using CovidApp.ViewModels;
+﻿using CovApp.ChartData;
+using CovApp.Models;
+using CovApp.ViewModels;
 using Microcharts;
 using SkiaSharp;
 using System;
@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace CovidApp.Views
+namespace CovApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CovidGraphPage : ContentPage
@@ -23,10 +23,9 @@ namespace CovidApp.Views
         {
             InitializeComponent();
             BindingContext = viewModel = new CovidViewModel();
-            Task<CovidSummary> task = viewModel.LoadData();
+            Task<NemocSummary> task = viewModel.LoadData();
             task.ContinueWith(result =>
-            {
-                List<ChartEntry> entries = new List<ChartEntry>();
+            {            
                 TimeSeries timeValues = new TimeSeries();
 
                 int cnt = 1;

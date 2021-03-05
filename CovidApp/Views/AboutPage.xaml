@@ -4,9 +4,9 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="CovidApp.Views.AboutPage"
+             x:Class="CovApp.Views.AboutPage"
              xmlns:magic="clr-namespace:MagicGradients;assembly=MagicGradients"
-             xmlns:vm="clr-namespace:CovidApp.ViewModels"
+             xmlns:vm="clr-namespace:CovApp.ViewModels"
              ControlTemplate="{StaticResource PageWithGradient}"
              Title="{Binding Title}">
 
@@ -81,7 +81,7 @@
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
-                                <Span ForegroundColor="{StaticResource LightTextColor}" Text="Studijní aplikace, ukazující počty prokázaných nakažených, provedených testů, zemřelých a vyléčených nemocí Covid-19" />
+                                <Span ForegroundColor="{StaticResource LightTextColor}" Text="Studijní aplikace, ukazující počty prokázaných nakažených, provedených testů, zemřelých a vyléčených sledované nemoci." />
                                 <Span ForegroundColor="{StaticResource LightTextColor}" Text=" naprogramována pro " />
                                 <Span ForegroundColor="{StaticResource LightTextColor}" Text="Xamarin Platform" FontAttributes="Bold" />
                                 <Span ForegroundColor="{StaticResource LightTextColor}" Text="." />
@@ -93,9 +93,9 @@
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
-                                <Span Text="Aplikace je dostupná pro" />
+                                <Span Text="Aplikace je dostupná pouze pro" />
                                 <Span Text=" " />
-                                <Span Text="iOS, Android" FontAttributes="Bold" />
+                                <Span Text="Android" FontAttributes="Bold" />
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>

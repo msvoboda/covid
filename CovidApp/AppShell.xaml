@@ -4,9 +4,9 @@
        xmlns:d="http://xamarin.com/schemas/2014/forms/design"
        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
        mc:Ignorable="d"
-       xmlns:local="clr-namespace:CovidApp.Views"
-       Title="CovidApp"
-       x:Class="CovidApp.AppShell">
+       xmlns:local="clr-namespace:CovApp.Views"
+       Title="Denní statistiky"
+       x:Class="CovApp.AppShell">
 
     <!-- 
         Styles and Resources 
@@ -31,7 +31,7 @@
 
     <!-- Your Pages -->
     <TabBar>
-        <Tab Title="Covid-19" Icon="virus.png">
+        <Tab Title="Nemoc" Icon="virus.png">
             <ShellContent ContentTemplate="{DataTemplate local:CovidPage}" />
         </Tab>
         <Tab Title="Graphs" Icon="virus.png">
@@ -40,39 +40,12 @@
         <Tab Title="Kraje" Icon="tab_feed.png">
             <ShellContent ContentTemplate="{DataTemplate local:RegionPage}" />
         </Tab>
+        <Tab Title="Očkování" Icon="healthcare.png">
+            <ShellContent ContentTemplate="{DataTemplate local:InjectionPage}" />
+        </Tab>
         <Tab Title="About" Icon="tab_about.png">
             <ShellContent ContentTemplate="{DataTemplate local:AboutPage}" />
         </Tab>
     </TabBar>
-
-    <!-- Optional Templates 
-    // These may be provided inline as below or as separate classes.
-
-    // This header appears at the top of the Flyout.
-    <Shell.FlyoutHeaderTemplate>
-        <DataTemplate>
-            <Grid>ContentHere</Grid>
-        </DataTemplate>
-    </Shell.FlyoutHeaderTemplate>
-
-    // ItemTemplate is for ShellItems as displayed in a Flyout
-    <Shell.ItemTemplate>
-        <DataTemplate>
-            <ContentView>
-                Bindable Properties: Title, Icon
-            </ContentView>
-        </DataTemplate>
-    </Shell.ItemTemplate>
-
-    // MenuItemTemplate is for MenuItems as displayed in a Flyout
-    <Shell.MenuItemTemplate>
-        <DataTemplate>
-            <ContentView>
-                Bindable Properties: Text, Icon
-            </ContentView>
-        </DataTemplate>
-    </Shell.MenuItemTemplate>
-
-    -->
 
 </Shell>

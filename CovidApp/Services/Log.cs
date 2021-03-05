@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CovidApp.Services
+namespace CovApp.Services
 {
     /// <summary>
     /// Facada na logovani - rozhrani

@@ -1,10 +1,10 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using CovidApp.Services;
-using CovidApp.Views;
+using CovApp.Services;
+using CovApp.Views;
 
-namespace CovidApp
+namespace CovApp
 {
     public partial class App : Application
     {

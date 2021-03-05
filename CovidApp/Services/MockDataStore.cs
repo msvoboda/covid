@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using CovidApp.Models;
+using CovApp.Models;
 
-namespace CovidApp.Services
+namespace CovApp.Services
 {
     public class MockDataStore : IDataStore<Item>
     {

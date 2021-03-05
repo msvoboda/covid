@@ -3,10 +3,10 @@ using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-using CovidApp.Models;
-using CovidApp.ViewModels;
+using CovApp.Models;
+using CovApp.ViewModels;
 
-namespace CovidApp.Views
+namespace CovApp.Views
 {
     // Learn more about making custom code visible in the Xamarin.Forms previewer
     // by visiting https://aka.ms/xamarinforms-previewer

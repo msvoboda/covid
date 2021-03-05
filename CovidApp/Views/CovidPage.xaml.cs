@@ -1,5 +1,6 @@
-﻿using CovidApp.Models;
-using CovidApp.ViewModels;
+﻿using CovApp.ChartData;
+using CovApp.Models;
+using CovApp.ViewModels;
 using Microcharts;
 using SkiaSharp;
 using System;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace CovidApp.Views
+namespace CovApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CovidPage : ContentPage
@@ -22,47 +23,24 @@ namespace CovidApp.Views
         {
             InitializeComponent();
             BindingContext = viewModel = new CovidViewModel();
-            Task<CovidSummary> task = viewModel.LoadData();
+            Task<NemocSummary> task = viewModel.LoadData();
             task.ContinueWith(result =>
             {
-            List<ChartEntry> entries = new List<ChartEntry>();
+                TimeSeries timeValues = new TimeSeries();
 
-             int cnt = 1;
-             DayValue last=null;
-            foreach (DayValue nv in result.Result.totalPositiveTests.ToList()) {
+                foreach (DayValue nv in result.Result.totalPositiveTests.ToList())
+                {
 
-                    if (nv.value == 0)
+                    TimeValue value = new TimeValue()
                     {
-                        cnt++;
-                        continue;
-                    }
-
-                    ChartEntry entry = new ChartEntry(nv.value)
-                    {
-                        Color = SKColor.Parse("#ff3300")                 
+                        DateTime = DateTime.Parse(nv.date),
+                        Value = (float)nv.value
                     };
-                    if (cnt % 10 == 0)
-                    {
-                        entry.Label = DateTime.Parse(nv.date.Substring(0,10)).ToShortDateString();
-                        entry.ValueLabel = nv.value.ToString();
-                    }
-                    int total = result.Result.totalPositiveTests.Count();
-                    if (cnt == 1 || cnt == total)
-                    {
-                        entry.Label = DateTime.Parse(nv.date.Substring(0, 10)).ToShortDateString();
-                        entry.ValueLabel = nv.value.ToString();
-                    }
+                    timeValues.Add(value);
 
-                    last = nv;
-                    cnt++;
-                    entries.Add(entry);
-            }
-            var chart = new LineChart() { Entries = entries };
-                chart.ValueLabelOrientation = Orientation.Vertical;
-                chart.PointMode = PointMode.None;
-                chart.LineMode = LineMode.Straight;
-                Chart.Chart = chart;
+                }
 
+                chartSimple.setTimeSeries(timeValues);
             });
 
         }

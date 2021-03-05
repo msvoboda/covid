@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace CovidApp.Services
+namespace CovApp.Services
 {
     public interface IDataStore<T>
     {

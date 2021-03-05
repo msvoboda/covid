@@ -5,15 +5,16 @@ using SkiaSharp.Views.Forms;
 using SkiaSharp;
 using System.Runtime.CompilerServices;
 using Xamarin.Forms;
-using CovidApp.ChartData;
+using CovApp.ChartData;
 using System.Linq;
 
-namespace CovidApp.Controls
+namespace CovApp.Controls
 {
     public class ChartControl : SKCanvasView
     {
      
         private SKColor myBackgroundColor;
+        private SKColor myColorTitle;
         private SKColor myColorAxis;
         private SKColor myColorLine;
         private SKColor myColorText;
@@ -34,6 +35,14 @@ namespace CovidApp.Controls
            thisControl.Title = (String)newValue;
        });
 
+        public static readonly BindableProperty ColorTitleProperty = BindableProperty.Create(nameof(ColorTitle),
+        typeof(Color), typeof(ChartControl), Color.Blue,
+        propertyChanging: (currentControl, oldValue, newValue) =>
+        {
+            var thisControl = currentControl as ChartControl;
+            thisControl.ColorTitle = (Color)newValue;
+        });
+
         public static readonly BindableProperty StepYProperty = BindableProperty.Create(nameof(StepY),
         typeof(float), typeof(ChartControl), 0f,
         propertyChanging: (currentControl, oldValue, newValue) =>
@@ -48,6 +57,7 @@ namespace CovidApp.Controls
             myColorAxis = SKColors.DarkGray;
             myColorText = SKColors.Black;
             myColorLine = SKColors.Red;
+            myColorTitle = SKColors.IndianRed;
         }
         
         private TimeSeries timeSeries = new TimeSeries();
@@ -64,6 +74,17 @@ namespace CovidApp.Controls
             {
                 SetValue(TitleProperty, value);
                 myTitle = value;
+                InvalidateSurface();
+            }
+        }
+
+        public Color ColorTitle
+        {
+            get { return (Color)GetValue(ColorTitleProperty); }
+            set
+            {
+                SetValue(ColorTitleProperty, value);
+                myColorTitle = value.ToSKColor();
                 InvalidateSurface();
             }
         }
@@ -137,7 +158,7 @@ namespace CovidApp.Controls
             {
                 paintTitle.TextSize = 24.0f;
                 paintTitle.IsAntialias = true;
-                paintTitle.Color = new SKColor(0x9C, 0xAF, 0xB7);
+                paintTitle.Color =myColorTitle;
                 paintTitle.IsStroke = true;
                 paintTitle.StrokeWidth = 1;
                 paintTitle.TextAlign = SKTextAlign.Center;

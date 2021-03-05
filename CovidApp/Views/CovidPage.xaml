@@ -4,18 +4,19 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
-             xmlns:controls="clr-namespace:CovidApp.Controls"
+             xmlns:controls="clr-namespace:CovApp.Controls"
              mc:Ignorable="d"
              Title="{Binding Title}"
-             x:Class="CovidApp.Views.CovidPage">
+             x:Class="CovApp.Views.CovidPage">
     <ContentPage.Content>
         <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
             <Label Margin="6,0,0,0" Text="{Binding Datum}" FontSize="Large"></Label>
         <Grid Margin="4" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
             <Grid.RowDefinitions>
                 <RowDefinition Height="10*"></RowDefinition>
-                <RowDefinition Height="20*"></RowDefinition>
-                <RowDefinition Height="20*"></RowDefinition>
+                <RowDefinition Height="10*"></RowDefinition>
+                <RowDefinition Height="10*"></RowDefinition>
+                <RowDefinition Height="10*"></RowDefinition>
                 <RowDefinition Height="50*"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
@@ -25,25 +26,37 @@
                
                 <controls:BoxGradient Grid.Row="0" Color1="Coral" Color2="Red" Margin="4" RoundRadius="8"></controls:BoxGradient>
                 <controls:BoxGradient Grid.Row="0" Grid.Column="1" Color1="Gray" Color2="Black" Margin="4" RoundRadius="8"></controls:BoxGradient>
-                <Label Grid.Row="0" Text="Denní přírustek" TextColor="White" VerticalOptions="Start" HorizontalOptions="Center" FontSize="Micro" Margin="0,4,0,0"></Label>
+                <Label Grid.Row="0" Text="Přírustek nakažených" TextColor="White" VerticalOptions="Start" HorizontalOptions="Center" FontSize="Micro" Margin="0,4,0,0"></Label>
                 <Label Grid.Row="0" Text="{Binding DayIncrease}" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" FontSize="Small" Margin="0,4,0,0"></Label>
                 <Label Grid.Row="0" Grid.Column="1" Text="Denní přírustek" TextColor="White" VerticalOptions="Start" HorizontalOptions="Center" FontSize="Micro" Margin="0,4,0,0"></Label>
                 <Label Grid.Row="0" Grid.Column="1" Text="{Binding DayDeceased}" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" FontSize="Small" Margin="0,4,0,0"></Label>
             
-                <BoxView Grid.Row="1" CornerRadius="4" Color="Red" Margin="4"></BoxView>
-                <Label Grid.Row="1" Text="Počet nakažených" TextColor="White" VerticalOptions="Start" HorizontalOptions="Center" FontSize="Small" Margin="0,4,0,0"></Label>
-                <Label Grid.Row="1" Text="{Binding Infected}" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Title"></Label>
+                <BoxView Grid.Row="1" CornerRadius="4" Color="OrangeRed" Margin="4"></BoxView>
+                <Label Grid.Row="1" Text="Počet nakažených" TextColor="White" VerticalOptions="Start" HorizontalOptions="Center" FontSize="Micro" Margin="0,4,0,0"></Label>
+                <Label Grid.Row="1" Text="{Binding Infected}" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Small"></Label>
             <BoxView Grid.Row="1" Grid.Column="1" CornerRadius="4" Color="Black" Margin="4"></BoxView>
-                <Label Grid.Row="1" Grid.Column="1" Text="Mrtvých" TextColor="White" VerticalOptions="Start" HorizontalOptions="Center" FontSize="Small" Margin="0,4,0,0"></Label>
-                <Label Grid.Row="1" Grid.Column="1" Text="{Binding Deceased}" TextColor="White" FontSize="Title" VerticalOptions="Center" HorizontalOptions="Center"></Label>
+                <Label Grid.Row="1" Grid.Column="1" Text="Mrtvých" TextColor="White" VerticalOptions="Start" HorizontalOptions="Center" FontSize="Micro" Margin="0,4,0,0"></Label>
+                <Label Grid.Row="1" Grid.Column="1" Text="{Binding Deceased}" TextColor="White" FontSize="Small" VerticalOptions="Center" HorizontalOptions="Center"></Label>
             <BoxView Grid.Row="2" Color="Blue" CornerRadius="4" Margin="4"></BoxView>
-                <Label Grid.Row="2" Text="Počet testů" TextColor="White" VerticalOptions="Start" HorizontalOptions="Center" FontSize="Small" Margin="0,4,0,0"></Label>
-                <Label Grid.Row="2" Grid.Column="0" Text="{Binding TotalTesty}" TextColor="White" FontSize="Title" VerticalOptions="Center" HorizontalOptions="Center"></Label>
-            <BoxView Grid.Row="2" Grid.Column="1" CornerRadius="4" Color="Green" Margin="4"></BoxView>
-                <Label Grid.Row="2" Grid.Column="1" Text="Počet uzdravených" TextColor="White" VerticalOptions="Start" HorizontalOptions="Center" FontSize="Small" Margin="0,4,0,0"></Label>
-                <Label Grid.Row="2" Grid.Column="1" Text="{Binding Recovered}" TextColor="White" FontSize="Title" VerticalOptions="Center" HorizontalOptions="Center"></Label>
+                <Label Grid.Row="2" Text="Počet testů" TextColor="White" VerticalOptions="Start" HorizontalOptions="Center" FontSize="Micro" Margin="0,4,0,0"></Label>
+                <Label Grid.Row="2" Grid.Column="0" Text="{Binding TotalTesty}" TextColor="White" FontSize="Small" VerticalOptions="Center" HorizontalOptions="Center"></Label>
+               
+                <BoxView Grid.Row="3" Grid.Column="0" CornerRadius="4" Color="Green" Margin="4"></BoxView>
+                <Label Grid.Row="3" Grid.Column="0" Text="Počet uzdravených" TextColor="White" VerticalOptions="Start" HorizontalOptions="Center" FontSize="Micro" Margin="0,4,0,0"></Label>
+                <Label Grid.Row="3" Grid.Column="0" Text="{Binding Recovered}" TextColor="White" FontSize="Small" VerticalOptions="Center" HorizontalOptions="Center"></Label>
+
+                <BoxView Grid.Row="2" Grid.Column="1" CornerRadius="4" Color="Gray" Margin="4"></BoxView>
+                <Label Grid.Row="2" Grid.Column="1" Text="Hospitalizace" TextColor="White" VerticalOptions="Start" HorizontalOptions="Center" FontSize="Micro" Margin="0,4,0,0"></Label>
+                <Label Grid.Row="2" Grid.Column="1" Text="{Binding Hospitalizace}" TextColor="White" FontSize="Small" VerticalOptions="Center" HorizontalOptions="Center"></Label>
+                
+                <BoxView Grid.Row="3" Grid.Column="1" CornerRadius="4" Color="Red" Margin="4"></BoxView>
+                <Label Grid.Row="3" Grid.Column="1" Text="V těžkém stavu" TextColor="White" VerticalOptions="Start" HorizontalOptions="Center" FontSize="Micro" Margin="0,4,0,0"></Label>
+                <Label Grid.Row="3" Grid.Column="1" Text="{Binding HospitalizaceHard}" TextColor="White" FontSize="Small" VerticalOptions="Center" HorizontalOptions="Center"></Label>
+                <!--
                 <forms:ChartView Grid.Row="3" Grid.ColumnSpan="2" x:Name="Chart" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 </forms:ChartView>
+                -->
+                <controls:ChartControl Grid.Row="4" Grid.ColumnSpan="2" x:Name="chartSimple" Title="Počet nakažených" ColorTitle="DarkBlue" StepY="100000"></controls:ChartControl>
             </Grid>
         </StackLayout>
     </ContentPage.Content>

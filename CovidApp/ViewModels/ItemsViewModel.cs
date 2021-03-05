@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
-using CovidApp.Models;
-using CovidApp.Views;
+using CovApp.Models;
+using CovApp.Views;
 
-namespace CovidApp.ViewModels
+namespace CovApp.ViewModels
 {
     public class ItemsViewModel : BaseViewModel
     {

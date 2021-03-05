@@ -1,5 +1,5 @@
-﻿using CovidApp.Models;
-using CovidApp.Services;
+﻿using CovApp.Models;
+using CovApp.Services;
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace CovidApp.ViewModels
+namespace CovApp.ViewModels
 {
     public class CovidViewModel : BaseViewModel
     {
@@ -19,9 +19,9 @@ namespace CovidApp.ViewModels
         }
 
         private List<NakazaDen> _nakaza;
-        private TestData _testy;
+        private TestData<TestDen> _testy;
         private DieData _dies;
-        private CovidSummary _summary;
+        private NemocSummary _summary;
 
         private DateTime _datum;
         public DateTime Datum
@@ -121,21 +121,36 @@ namespace CovidApp.ViewModels
             }
         }
 
-
-        public Task<CovidSummary> LoadData()
+        private long _hospitalizace;
+        public long Hospitalizace
         {
-            Task<IEnumerable<NakazaDen>> task = covidService.GetNakazaList();
-            task.ContinueWith(result =>
+            get
             {
-                _nakaza = result.Result.ToList();
-                NakazaDen last = _nakaza.Last();
-                Infected = last.pocetCelkem;
-                DateTime dt;
-                DateTime.TryParse(last.datum, out dt);
-                Datum =  dt;
-            });
+                return _hospitalizace;
+            }
+            set
+            {
+                SetProperty(ref _hospitalizace, value);
+            }
+        }
 
-            Task<CovidSummary> taskSum = covidService.GetCovidSummary();
+        private long _hospitalizaceHard;
+        public long HospitalizaceHard
+        {
+            get
+            {
+                return _hospitalizaceHard;
+            }
+            set
+            {
+                SetProperty(ref _hospitalizaceHard, value);
+            }
+        }
+
+
+        public Task<NemocSummary> LoadData()
+        {
+            Task<NemocSummary> taskSum = covidService.GetCovidSummary();
             taskSum.ContinueWith(result =>
             {
                 _summary = result.Result;
@@ -165,12 +180,25 @@ namespace CovidApp.ViewModels
                
             });
 
-            Task<TestData> taskTest = covidService.GetTestyList();
+            Task<TestData<HospitalizaceData>> taskHospitalizace = covidService.GetHospitalizaceList();
+            taskHospitalizace.ContinueWith(result =>
+            {
+                TestData<HospitalizaceData> hospitalizace = result.Result;
+                if (hospitalizace != null)
+                {
+                     HospitalizaceData last = hospitalizace.data.Last<HospitalizaceData>();
+                    Hospitalizace = last.pocet_hosp;
+                    HospitalizaceHard = last.stav_tezky;
+                }
+
+            });
+
+
+            Task<TestData<TestDen>> taskTest = covidService.GetTestyList();
             taskTest.ContinueWith(result =>
             {
                 _testy = result.Result;
                 TestDen last = _testy.data.Last();
-
             });
 
             return taskSum;

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace CovidApp.Controls
+namespace CovApp.Controls
 {
     public class NumericEntry: Entry
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CovidApp.ChartData
+namespace CovApp.ChartData
 {
     public class TimeSeries : List<TimeValue>
     {

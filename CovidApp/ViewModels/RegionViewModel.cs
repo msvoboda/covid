@@ -1,5 +1,5 @@
-﻿using CovidApp.Models;
-using CovidApp.Services;
+﻿using CovApp.Models;
+using CovApp.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace CovidApp.ViewModels
+namespace CovApp.ViewModels
 {
     public class RegionViewModel : BaseViewModel
     {
@@ -17,11 +17,11 @@ namespace CovidApp.ViewModels
             Title = "Přehled krajů";
         }
 
-        private CovidSummary _summary;
+        private NemocSummary _summary;
 
         public void LoadData()
         {
-            Task<CovidSummary> taskSum = covidService.GetCovidSummary();
+            Task<NemocSummary> taskSum = covidService.GetCovidSummary();
             taskSum.ContinueWith(result =>
             {
                 _summary = result.Result;

@@ -11,15 +11,15 @@ using Xamarin.Forms.Xaml;
 namespace CovApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class RegionPage : ContentPage
+    public partial class InjectionPage : ContentPage
     {
-        RegionViewModel viewModel;
+        InjectionViewModel viewModel;
 
-        public RegionPage()
+        public InjectionPage()
         {
             InitializeComponent();
-            BindingContext = viewModel = new RegionViewModel();
-            viewModel.LoadData();
+            viewModel = new InjectionViewModel();
+            BindingContext = viewModel; 
         }
     }
 }

@@ -6,7 +6,7 @@ using SkiaSharp;
 using System.Runtime.CompilerServices;
 using Xamarin.Forms;
 
-namespace CovidApp.Controls
+namespace CovApp.Controls
 {
     public class BoxGradient : SKCanvasView
     {

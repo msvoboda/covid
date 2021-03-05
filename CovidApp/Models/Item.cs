@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CovidApp.Models
+namespace CovApp.Models
 {
     public class Item
     {

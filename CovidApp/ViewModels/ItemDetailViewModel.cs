@@ -1,8 +1,8 @@
 ﻿using System;
 
-using CovidApp.Models;
+using CovApp.Models;
 
-namespace CovidApp.ViewModels
+namespace CovApp.ViewModels
 {
     public class ItemDetailViewModel : BaseViewModel
     {

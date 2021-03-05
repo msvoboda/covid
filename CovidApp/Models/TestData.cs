@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CovidApp.Models
+namespace CovApp.Models
 {
-    public class TestData
+    public class TestData<T>
     {
         public String modified
         {
@@ -19,7 +19,7 @@ namespace CovidApp.Models
             set;
         }
 
-        public IEnumerable<TestDen> data
+        public IEnumerable<T> data
         {
             get;
             set;

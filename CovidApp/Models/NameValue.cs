@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CovidApp.Models
+namespace CovApp.Models
 {
     public class NameValue
     {

@@ -5,10 +5,10 @@ using System.Runtime.CompilerServices;
 
 using Xamarin.Forms;
 
-using CovidApp.Models;
-using CovidApp.Services;
+using CovApp.Models;
+using CovApp.Services;
 
-namespace CovidApp.ViewModels
+namespace CovApp.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {

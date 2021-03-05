@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CovidApp.Services
+namespace CovApp.Services
 {
     public delegate Task<T> HttpSuccessHandlerDelegate<T>(HttpResponseMessage response);
     public delegate Task<T> HttpStreamHandlerDelegate<T>(Stream stream);
