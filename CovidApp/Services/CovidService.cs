@@ -18,6 +18,8 @@ namespace CovApp.Services
         Task<DieData> GetDieList();
 
         Task<TestData<HospitalizaceData>> GetHospitalizaceList();
+
+        Task<TestData<OckovaniData>> GetOckovaniList();
     }
 
     public class CovidService : ICovidService
@@ -27,7 +29,8 @@ namespace CovApp.Services
         Uri urlTesty = new Uri("https://onemocneni-aktualne.mzcr.cz/api/v1/cov"+urlid+"/testy.min.json");
         Uri urlCovidData = new Uri("https://api.apify.com/v2/key-value-stores/K373S4uCFR9W1K8ei/records/LATEST?disableRedirect=true");
         Uri urlDieData = new Uri("https://onemocneni-aktualne.mzcr.cz/api/v2/cov"+urlid+"/nakazeni-vyleceni-umrti-testy.min.json");
-        Uri urlHospitalizace = new Uri("https://onemocneni-aktualne.mzcr.cz/api/v2/covid-19/hospitalizace.json");
+        Uri urlHospitalizace = new Uri("https://onemocneni-aktualne.mzcr.cz/api/v2/cov"+urlid+"/hospitalizace.json");
+        Uri urlOckovani = new Uri("https://onemocneni-aktualne.mzcr.cz/api/v2/cov"+urlid+"/ockovani.json");
 
         HttpClientService client = new HttpClientService();
 
@@ -79,6 +82,17 @@ namespace CovApp.Services
             {
                 var content = await response.Content.ReadAsStringAsync();
                 TestData<HospitalizaceData> items = JsonConvert.DeserializeObject<TestData<HospitalizaceData>>(content);
+                return items;
+            });
+            return result;
+        }
+
+        public async Task<TestData<OckovaniData>> GetOckovaniList()
+        {
+            var result = await client.Get<TestData<OckovaniData>>(urlOckovani, null, async response =>
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                TestData<OckovaniData> items = JsonConvert.DeserializeObject<TestData<OckovaniData>>(content);
                 return items;
             });
             return result;

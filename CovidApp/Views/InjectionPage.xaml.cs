@@ -19,7 +19,9 @@ namespace CovApp.Views
         {
             InitializeComponent();
             viewModel = new InjectionViewModel();
-            BindingContext = viewModel; 
+            BindingContext = viewModel;
+            viewModel.LoadData();
+                
         }
     }
 }

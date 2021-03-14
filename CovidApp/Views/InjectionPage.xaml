@@ -1,12 +1,44 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="CovApp.Views.InjectionPage">
+              xmlns:controls="clr-namespace:CovApp.Controls"
+             x:Class="CovApp.Views.InjectionPage" Title="{Binding Title}">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid Margin="2" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*"></RowDefinition>
+                <RowDefinition Height="10*"></RowDefinition>
+                <RowDefinition Height="8*"></RowDefinition>
+                <RowDefinition Height="8*"></RowDefinition>
+                <RowDefinition Height="8*"></RowDefinition>
+                <RowDefinition Height="8*"></RowDefinition>
+                <RowDefinition Height="80*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*"></ColumnDefinition>
+                <ColumnDefinition Width="50*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <controls:BoxGradient Grid.Row="0" Grid.ColumnSpan="2" Color1="Coral" Color2="Red" Margin="2" RoundRadius="8"></controls:BoxGradient>
+            <controls:BoxGradient Grid.Row="1" Grid.Column="0" Color1="GreenYellow" Color2="Green" Margin="2" RoundRadius="8"></controls:BoxGradient>
+            <controls:BoxGradient Grid.Row="1" Grid.Column="1" Color1="Green" Color2="GreenYellow" Margin="2" RoundRadius="8"></controls:BoxGradient>
+            <Label Grid.Row="0" Grid.ColumnSpan="2" Text="Očkování" TextColor="White" VerticalOptions="Start" HorizontalOptions="Center" FontSize="Micro" Margin="0,2,0,0"></Label>
+            <Label Grid.Row="0" Grid.ColumnSpan="2" Text="{Binding OckovaniCelkem}" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" FontSize="Small" Margin="0,2,0,0"></Label>
+            <Label Grid.Row="1" Grid.Column="0" Text="První dávka" TextColor="White" VerticalOptions="Start" HorizontalOptions="Center" FontSize="Micro" Margin="0,2,0,0"></Label>
+            <Label Grid.Row="1" Grid.Column="0" Text="{Binding OckovaniPrvni}" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" FontSize="Small" Margin="0,2,0,0"></Label>
+            <Label Grid.Row="1" Grid.Column="1" Text="Druhá dávka" TextColor="White" VerticalOptions="Start" HorizontalOptions="Center" FontSize="Micro" Margin="0,2,0,0"></Label>
+            <Label Grid.Row="1" Grid.Column="1" Text="{Binding OckovaniDruha}" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" FontSize="Small" Margin="0,2,0,0"></Label>
+
+            <controls:BoxGradient Grid.Row="2" Grid.ColumnSpan="2" Color1="Blue" Color2="AliceBlue" Margin="1" RoundRadius="8"></controls:BoxGradient>
+            <controls:BoxGradient Grid.Row="3" Grid.ColumnSpan="2" Color1="Red" Color2="Orange" Margin="1" RoundRadius="8"></controls:BoxGradient>
+            <controls:BoxGradient Grid.Row="4" Grid.ColumnSpan="2" Color1="Green" Color2="LawnGreen" Margin="1" RoundRadius="8"></controls:BoxGradient>
+
+            <Label Grid.Row="2" Grid.ColumnSpan="2" Text="Pfizer" TextColor="White" VerticalOptions="Start" HorizontalOptions="Start" FontSize="Micro" Margin="4,2,0,0"></Label>
+            <Label Grid.Row="3" Grid.ColumnSpan="2" Text="Moderna" TextColor="White" VerticalOptions="Start" HorizontalOptions="Start" FontSize="Micro" Margin="4,2,0,0"></Label>
+            <Label Grid.Row="4" Grid.ColumnSpan="2" Text="AstraZeneca" TextColor="White" VerticalOptions="Start" HorizontalOptions="Start" FontSize="Micro" Margin="4,2,0,0"></Label>
+
+            <Label Grid.Row="2" Grid.ColumnSpan="2" Text="{Binding Comirnaty}" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Micro" Margin="2,2,0,0"></Label>
+            <Label Grid.Row="3" Grid.ColumnSpan="2" Text="{Binding Moderna}" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Micro" Margin="2,2,0,0"></Label>
+            <Label Grid.Row="4" Grid.ColumnSpan="2" Text="{Binding AstraZeneca}" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Micro" Margin="2,2,0,0"></Label>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
